@@ -1,0 +1,23 @@
+# To Do
+- **Drivetrain**
+    - YAGSL
+        - Config JSON
+        - Config SwerveSubsystem
+    - Auto Align
+        - See Vision
+- **Shooter**
+    - Auto Align
+        - See Vision
+- **Intake**
+    - Ground intake
+    - Indexer
+- **Vision**
+    - Auto Align
+        - Align shooter to target
+        - Calculate launch speed & Angle
+    - 3D/2D pos map
+    - Driver general vision
+- **Climber**
+
+- **Auto**
+    - Plot paths
