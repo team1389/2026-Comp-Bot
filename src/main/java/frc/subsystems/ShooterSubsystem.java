@@ -25,7 +25,7 @@ public class ShooterSubsystem extends SubsystemBase{
     }
 
     public void setSpeed(double i) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setSpeed'");
+        UpperShooterMotor.setControl(new VoltageOut(i));
+        LowerShooterMotor.setControl(new VoltageOut(i));
     }
 }

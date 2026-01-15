@@ -1,14 +1,13 @@
 package frc.command;
 
-import frc.subsystems.ShooterSubsystem;
-
+import frc.subsystems.IndexerSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 
-public class Shooter extends Command {
-    public ShooterSubsystem ShooterSubsystem;
+public class Indexer extends Command {
+    public IndexerSubsystem IndexerSubsystem;
 
-    public Shooter(ShooterSubsystem ShooterSubsystem) {
-        this.ShooterSubsystem = ShooterSubsystem;
+    public Indexer(IndexerSubsystem IndexerSubsystem){
+        this.IndexerSubsystem = IndexerSubsystem;
     }
 
     public void initialize(){
@@ -18,13 +17,13 @@ public class Shooter extends Command {
     @Override
     public void execute() {
         //This gets called when the command does. 
-        ShooterSubsystem.run();
+        IndexerSubsystem.run();
     }
 
     @Override
     public void end(boolean interrupted) {
         //this gets called when the input stops being given. 
-        ShooterSubsystem.stop();
+        IndexerSubsystem.stop();
     }
 
     @Override
