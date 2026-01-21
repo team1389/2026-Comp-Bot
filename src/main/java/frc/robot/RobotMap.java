@@ -17,6 +17,9 @@ public class RobotMap {
     public static final int IndexerPort = 11;
     //Turret Ports
     public static final int TurretPort = 12;
+
+    //Hood Ports
+    public static final int HoodPort = 13;
     
     //Speeds
 
@@ -26,6 +29,8 @@ public class RobotMap {
     public static final double MaxIndexerSpeed = 0.1; //Set on 0-1 scale
     //Turret Speed
     public static final double MaxTurretSpeed = 1; //Set on 0-1 scale
+    //Hood Speed
+    public static final double MaxHoodSpeed = 0.5;
 
     //Other CAN id's
 
@@ -35,5 +40,7 @@ public class RobotMap {
     //Indexer Can Id's
     public static final int IndexerCanID = 11;
     //Turret Can Id's
-    public static final int TurretCanID = 12;   
+    public static final int TurretCanID = 12;
+    //Hood Can Id's
+    public static final int HoodCanID = 13;
 }
