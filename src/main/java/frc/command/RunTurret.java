@@ -5,10 +5,10 @@ import frc.subsystems.TurretSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 
 public class RunTurret extends Command {
-    public TurretSubsystem TurretSubsystem;
+    public TurretSubsystem turretSubsystem;
 
-    public RunTurret(TurretSubsystem TurretSubsystem) {
-        this.TurretSubsystem = TurretSubsystem;
+    public RunTurret(TurretSubsystem turretSubsystem) {
+        this.turretSubsystem = turretSubsystem;
     }
 
     public void initialize(){
@@ -18,13 +18,13 @@ public class RunTurret extends Command {
     @Override
     public void execute() {
         //This gets called when the command does. 
-        TurretSubsystem.setSpeed(RobotMap.MaxTurretSpeed);
+        turretSubsystem.setSpeed(RobotMap.MaxTurretSpeed);
     }
 
     @Override
     public void end(boolean interrupted) {
         //this gets called when the input stops being given. 
-        TurretSubsystem.stop();
+        turretSubsystem.stop();
     }
 
     @Override

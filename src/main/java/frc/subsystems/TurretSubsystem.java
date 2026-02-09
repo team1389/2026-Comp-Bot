@@ -36,7 +36,7 @@ public class TurretSubsystem extends SubsystemBase {
                         .withControlMode(ControlMode.CLOSED_LOOP)
                         .withClosedLoopController(4, 0, 0, DegreesPerSecond.of(180), DegreesPerSecondPerSecond.of(90))
                         // Configure Motor and Mechanism properties
-                        .withGearing(new MechanismGearing(GearBox.fromReductionStages(3, 4)))
+                        .withGearing(new MechanismGearing(GearBox.fromReductionStages(1, 50)))
                         .withIdleMode(MotorMode.BRAKE)
                         .withMotorInverted(false)
                         // Setup Telemetry
@@ -50,11 +50,10 @@ public class TurretSubsystem extends SubsystemBase {
                         motorConfig);
 
         private final PivotConfig turretConfig = new PivotConfig(turretSMC)
-                        .withStartingPosition(Degrees.of(0)) // Starting powithWrsition of the Pivot
+                         .withStartingPosition(Degrees.of(45)) // Starting powithWrsition of the Pivot
                         .withWrapping(edu.wpi.first.units.Units.Rotations.of(-0.5), edu.wpi.first.units.Units.Rotations.of(0.5)) // Wrapping enabled bc the pivot can spin
                                                                       // infinitely
-                        .withHardLimit(Degrees.of(0), Degrees.of(720)) // Hard limit bc wiring prevents infinite
-                                                                       // spinning
+                        .withHardLimit(Degrees.of(-99.5), Degrees.of(99.5)) // Hard limit bc wiring prevents infinite spinning
                         .withTelemetry("TurretMech", TelemetryVerbosity.HIGH) // Telemetry
                         .withMOI(Meters.of(0.25), Pounds.of(4)); // MOI Calculation
 
