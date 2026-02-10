@@ -4,6 +4,7 @@ import com.pathplanner.lib.commands.PathPlannerAuto;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import frc.subsystems.FlywheelSubsystem;
 
 
 public class OI {
@@ -52,10 +53,12 @@ public class OI {
     //Creates Bindings for controllers
     public OI() {
         configureBindings();
+        
     }
 
 
     private void configureBindings() {
+        FlywheelSubsystem flywheelSubsystem = new FlywheelSubsystem();
         /*
         Command driveFieldOrientedDirectAngle      = drivebase.driveFieldOriented(driveDirectAngle);
         Command driveFieldOrientedAnglularVelocity = drivebase.driveFieldOriented(driveAngularVelocity);
