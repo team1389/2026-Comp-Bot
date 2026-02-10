@@ -9,8 +9,8 @@ public class RobotMap {
     //Drivetrain CAN id's
 
     //Other Motor Ports
-
+    public static final int FlywheelMotorPort = 20;
     //Other CAN id's
-
+    public static final int FlywheelCanID = 20;
     
 }
