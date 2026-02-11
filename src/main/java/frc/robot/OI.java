@@ -4,6 +4,7 @@ import com.pathplanner.lib.commands.PathPlannerAuto;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import frc.command.RunFlywheel;
 import frc.subsystems.FlywheelSubsystem;
 
 
@@ -72,6 +73,7 @@ public class OI {
          */
         //PUT YOUR COMMANDS in here! Default commands go first.  
         //manipController.a().whileTrue(new Intake(IntakeSubsystem));
+        manipController.a().whileTrue(new RunFlywheel(flywheelSubsystem));
 
     }
 

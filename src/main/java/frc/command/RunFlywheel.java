@@ -2,12 +2,16 @@
 package frc.command;
 
 import frc.subsystems.FlywheelSubsystem;
+
+import static edu.wpi.first.units.Units.DegreesPerSecond;
+
+import edu.wpi.first.units.measure.AngularVelocity;
 import edu.wpi.first.wpilibj2.command.Command;
 
-public class Flywheel extends Command {
+public class RunFlywheel extends Command {
     public FlywheelSubsystem FlywheelSubsystem;
 
-    public Flywheel(FlywheelSubsystem FlywheelSubsystem) {
+    public RunFlywheel(FlywheelSubsystem FlywheelSubsystem) {
         this.FlywheelSubsystem = FlywheelSubsystem;
     }
 
@@ -18,13 +22,13 @@ public class Flywheel extends Command {
     @Override
     public void execute() {
         //This gets called when the command does. 
-        FlywheelSubsystem.setVelocity(12);
+        FlywheelSubsystem.setVelocity(AngularVelocity.ofRelativeUnits(5, DegreesPerSecond));
     }
 
     @Override
     public void end(boolean interrupted) {
         //this gets called when the input stops being given. 
-        FlywheelSubsystem.stop();
+        FlywheelSubsystem.setVelocity(AngularVelocity.ofRelativeUnits(0, DegreesPerSecond));
     }
 
     @Override
