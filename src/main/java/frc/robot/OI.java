@@ -52,6 +52,7 @@ public class OI {
     //Creates Bindings for controllers
     public OI() {
         configureBindings();
+        
     }
 
 
