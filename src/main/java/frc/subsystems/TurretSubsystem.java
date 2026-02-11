@@ -50,7 +50,7 @@ public class TurretSubsystem extends SubsystemBase {
                         motorConfig);
 
         private final PivotConfig turretConfig = new PivotConfig(turretSMC)
-                         .withStartingPosition(Degrees.of(45)) // Starting powithWrsition of the Pivot
+                         .withStartingPosition(Degrees.of(0)) // Starting position of the Pivot
                         .withWrapping(edu.wpi.first.units.Units.Rotations.of(-0.5), edu.wpi.first.units.Units.Rotations.of(0.5)) // Wrapping enabled bc the pivot can spin
                                                                       // infinitely
                         .withHardLimit(Degrees.of(-99.5), Degrees.of(99.5)) // Hard limit bc wiring prevents infinite spinning

@@ -1,14 +1,17 @@
 package frc.command;
 
+import static edu.wpi.first.units.Units.Degrees;
 import frc.robot.RobotMap;
 import frc.subsystems.TurretSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 
-public class RunTurret extends Command {
-    public TurretSubsystem turretSubsystem;
+public class RunTurret extends Command { 
+    public static TurretSubsystem turretSubsystem;
+    private double targetAngle; //Sets angle to a variable so it can be used in execute and end.
 
-    public RunTurret(TurretSubsystem turretSubsystem) {
+    public RunTurret(TurretSubsystem turretSubsystem, double targetAngle) {
         this.turretSubsystem = turretSubsystem;
+        this.targetAngle = targetAngle;
     }
 
     public void initialize(){
@@ -19,6 +22,7 @@ public class RunTurret extends Command {
     public void execute() {
         //This gets called when the command does. 
         turretSubsystem.setSpeed(RobotMap.MaxTurretSpeed);
+        turretSubsystem.setAngle(Degrees.of(targetAngle)); // Set turret to starting angle
     }
 
     @Override

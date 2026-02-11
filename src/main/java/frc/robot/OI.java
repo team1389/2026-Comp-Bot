@@ -2,10 +2,12 @@ package frc.robot;
 
 import com.pathplanner.lib.commands.PathPlannerAuto;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.command.RunTurret;
 import frc.subsystems.TurretSubsystem;
+import static edu.wpi.first.units.Units.Degrees;
 
 
 public class OI {
@@ -59,7 +61,8 @@ public class OI {
     
         private void configureBindings() {
             
-            TurretSubsystem TurretSubsystem = new TurretSubsystem();
+            TurretSubsystem turretSubsystem = new TurretSubsystem();
+            double targetAngle = 45; // Set target angle for the turret
                         /*
                         Command driveFieldOrientedDirectAngle      = drivebase.driveFieldOriented(driveDirectAngle);
                         Command driveFieldOrientedAnglularVelocity = drivebase.driveFieldOriented(driveAngularVelocity);
@@ -73,7 +76,9 @@ public class OI {
                          */
                         //PUT YOUR COMMANDS in here! Default commands go first.  
                         //manipController.a().whileTrue(new Intake(IntakeSubsystem));
-                        manipController.a().whileTrue(new RunTurret(TurretSubsystem));
+                        manipController.a().whileTrue(new RunTurret(turretSubsystem,targetAngle));
+                        
+
 
     }
 
