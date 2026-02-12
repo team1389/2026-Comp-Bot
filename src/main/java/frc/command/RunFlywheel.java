@@ -9,7 +9,7 @@ import edu.wpi.first.units.measure.AngularVelocity;
 import edu.wpi.first.wpilibj2.command.Command;
 
 public class RunFlywheel extends Command {
-    public FlywheelSubsystem FlywheelSubsystem;
+    public FlywheelSubsystem flywheelSubsystem;
 
     public RunFlywheel(FlywheelSubsystem FlywheelSubsystem) {
         this.FlywheelSubsystem = FlywheelSubsystem;
