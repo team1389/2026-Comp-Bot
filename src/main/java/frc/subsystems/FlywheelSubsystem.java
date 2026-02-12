@@ -58,7 +58,7 @@ public class FlywheelSubsystem extends SubsystemBase
       .withSimFeedforward(new SimpleMotorFeedforward(0.27937, 0.089836, 0.014557))
       .withControlMode(ControlMode.CLOSED_LOOP);
 
-  private final SmartMotorController motor = new TalonFXWrapper(flywheelMotor1, DCMotor.getNEO(1), motorConfig);
+  private final SmartMotorController motor = new TalonFXWrapper(flywheelMotor1, DCMotor.getKrakenX60(1), motorConfig);
 
   // Added correct values for diameter and mass
   private final FlyWheelConfig flywheelConfig = new FlyWheelConfig(motor)
