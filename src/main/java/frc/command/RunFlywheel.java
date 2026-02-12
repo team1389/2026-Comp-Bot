@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 public class RunFlywheel extends Command {
     public FlywheelSubsystem flywheelSubsystem;
 
-    public RunFlywheel(FlywheelSubsystem FlywheelSubsystem) {
+    public RunFlywheel(FlywheelSubsystem flywheelSubsystem) {
         this.FlywheelSubsystem = FlywheelSubsystem;
     }
 
