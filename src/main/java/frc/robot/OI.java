@@ -73,7 +73,7 @@ public class OI {
          */
         //PUT YOUR COMMANDS in here! Default commands go first.  
         //manipController.a().whileTrue(new Intake(IntakeSubsystem));
-        manipController.a().whileTrue(new RunFlywheel(flywheelSubsystem));
+        manipController.b().whileTrue(new RunFlywheel(flywheelSubsystem));
 
     }
 

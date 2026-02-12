@@ -12,7 +12,7 @@ public class RunFlywheel extends Command {
     public FlywheelSubsystem flywheelSubsystem;
 
     public RunFlywheel(FlywheelSubsystem flywheelSubsystem) {
-        this.FlywheelSubsystem = FlywheelSubsystem;
+        this.flywheelSubsystem = flywheelSubsystem;
     }
 
     public void initialize(){
@@ -22,13 +22,13 @@ public class RunFlywheel extends Command {
     @Override
     public void execute() {
         //This gets called when the command does. 
-        FlywheelSubsystem.setVelocity(AngularVelocity.ofRelativeUnits(5, DegreesPerSecond));
+        flywheelSubsystem.setVelocity(AngularVelocity.ofRelativeUnits(180, DegreesPerSecond));
     }
 
     @Override
     public void end(boolean interrupted) {
         //this gets called when the input stops being given. 
-        FlywheelSubsystem.setVelocity(AngularVelocity.ofRelativeUnits(0, DegreesPerSecond));
+        flywheelSubsystem.setVelocity(AngularVelocity.ofRelativeUnits(0, DegreesPerSecond));
     }
 
     @Override
