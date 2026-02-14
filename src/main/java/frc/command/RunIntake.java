@@ -7,12 +7,12 @@ import edu.wpi.first.units.measure.Angle;
 import edu.wpi.first.wpilibj2.command.Command;
 
 public class RunIntake extends Command {
-    public IntakeSubsystem IntakeSubsystem;
+    public IntakeSubsystem intakeSubsystem;
     //example angle, change to whatever you want the intake to be at when the command is run.
     private double armIntakeTargetAngle;
 
-    public RunIntake(IntakeSubsystem IntakeSubsystem, double armIntakeTargetAngle){ 
-        this.IntakeSubsystem = IntakeSubsystem;
+    public RunIntake(IntakeSubsystem intakeSubsystem, double armIntakeTargetAngle){ 
+        this.intakeSubsystem = intakeSubsystem;
         this.armIntakeTargetAngle = armIntakeTargetAngle;
     }
 
@@ -23,14 +23,14 @@ public class RunIntake extends Command {
     @Override
     public void execute() {
         //This gets called when the command does. 
-        IntakeSubsystem.setSpeed(12);
-        IntakeSubsystem.setAngle(Degrees.of(armIntakeTargetAngle));
+        intakeSubsystem.setSpeed(12);
+        intakeSubsystem.setAngle(Degrees.of(armIntakeTargetAngle));
     }
 
     @Override
     public void end(boolean interrupted) {
         //this gets called when the input stops being given. 
-        IntakeSubsystem.stop();
+        intakeSubsystem.stop();
     }
 
     @Override
