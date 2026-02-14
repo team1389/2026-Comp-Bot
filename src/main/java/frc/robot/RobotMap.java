@@ -9,8 +9,12 @@ public class RobotMap {
     //Drivetrain CAN id's
 
     //Other Motor Ports
-
+    //Intake Motor ports
+    public static final int IntakeMotorPort = 15;
+    public static final int IntakeArmMotorPort = 16;
     //Other CAN id's
+    public static final int IntakeCanID = 15;
+    public static final int IntakeArmCanID = 16;
 
     
 }
