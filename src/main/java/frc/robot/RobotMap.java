@@ -8,16 +8,12 @@ public class RobotMap {
 
     //Drivetrain CAN id's
 
-    //Other Motor Ports
-
-    //Turret Motor Ports
-    public static final int TurretPort = 12;
     //Other CAN id's
     //Turret CAN id's
     public static final int TurretCanID = 12;
 
     //Max Speeds
     public static final double MaxTurretSpeed = 1;
-
+    public static final int FlywheelCanID = 20;
 
 }

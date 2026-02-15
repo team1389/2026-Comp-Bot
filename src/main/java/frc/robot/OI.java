@@ -8,6 +8,8 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.command.RunTurret;
 import frc.subsystems.TurretSubsystem;
 import static edu.wpi.first.units.Units.Degrees;
+import frc.command.RunFlywheel;
+import frc.subsystems.FlywheelSubsystem;
 
 
 public class OI {
@@ -56,14 +58,16 @@ public class OI {
         //Creates Bindings for controllers
         public OI() {
             configureBindings();
-        }
+            
+    }
     
     
         private void configureBindings() {
             
             TurretSubsystem turretSubsystem = new TurretSubsystem();
             double targetAngle = 45; // Set target angle for the turret
-                        /*
+                        FlywheelSubsystem flywheelSubsystem = new FlywheelSubsystem();
+        /*
                         Command driveFieldOrientedDirectAngle      = drivebase.driveFieldOriented(driveDirectAngle);
                         Command driveFieldOrientedAnglularVelocity = drivebase.driveFieldOriented(driveAngularVelocity);
                         Command driveRobotOrientedAngularVelocity  = drivebase.driveFieldOriented(driveRobotOriented);
@@ -79,6 +83,7 @@ public class OI {
                         manipController.a().whileTrue(new RunTurret(turretSubsystem,targetAngle));
                         
 
+        manipController.b().whileTrue(new RunFlywheel(flywheelSubsystem));
 
     }
 
