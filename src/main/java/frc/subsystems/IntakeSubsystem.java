@@ -35,7 +35,7 @@ public class IntakeSubsystem extends SubsystemBase {
 
 
   // Roller Simulation
-  private static final double intakeMotorSimGearRatio = 10.0;
+  private static final double intakeMotorSimGearRatio = 3.0;
 
   private final DCMotorSim intakeMotorSim =
       new DCMotorSim(
