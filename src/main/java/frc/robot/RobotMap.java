@@ -1,16 +1,13 @@
 package frc.robot;
 
-/**
- * define Hardware Ports and CAN id's in here
- */
+/** define Hardware Ports and CAN id's in here */
 public class RobotMap {
-    //Drivetrain Motor Ports
+  // Drivetrain Motor Ports
 
-    //Drivetrain CAN id's
+  // Drivetrain CAN id's
 
-    //Other Motor Ports
+  // Other Motor Ports
 
-    //Other CAN id's
+  // Other CAN id's
 
-    
 }
