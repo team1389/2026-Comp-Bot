@@ -17,6 +17,7 @@ import edu.wpi.first.math.system.plant.DCMotor;
 import edu.wpi.first.units.measure.Angle;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.RobotMap;
 import yams.gearing.GearBox;
 import yams.gearing.MechanismGearing;
 import yams.mechanisms.config.ArmConfig;
@@ -31,19 +32,19 @@ import yams.motorcontrollers.remote.TalonFXWrapper;
 import com.ctre.phoenix6.hardware.TalonFX;
 
 public class HoodSubsystem extends SubsystemBase {
-    private final TalonFX hoodMotor = new TalonFX(2);
+    private final TalonFX hoodMotor = new TalonFX(RobotMap.HoodCanID);
 
     private final SmartMotorControllerConfig hoodMotorConfig = new SmartMotorControllerConfig(this)
-            .withClosedLoopController(0.00016541, 0, 0, RPM.of(5000), RotationsPerSecondPerSecond.of(2500))
-            .withGearing(new MechanismGearing(GearBox.fromReductionStages(4, 4)))
+            .withClosedLoopController(RobotMap.HoodIntegralCorr, 0, 0, RPM.of(RobotMap.HoodMaxVel), RotationsPerSecondPerSecond.of(RobotMap.HoodMaxAcc))
+            .withGearing(new MechanismGearing(GearBox.fromReductionStages( 4, 4 ))) //gear ratio after reduction
             .withIdleMode(MotorMode.COAST)
             .withTelemetry("HoodMotor", TelemetryVerbosity.HIGH)
-            .withStatorCurrentLimit(Amps.of(40))
-            .withMotorInverted(false)
-            .withClosedLoopRampRate(Seconds.of(0.25))
-            .withOpenLoopRampRate(Seconds.of(0.25))
-            .withFeedforward(new SimpleMotorFeedforward(0.27937, 0.089836, 0.014557))
-            .withSimFeedforward(new SimpleMotorFeedforward(0.27937, 0.089836, 0.014557))
+            .withStatorCurrentLimit(Amps.of(RobotMap.HoodMaxAmp))
+            .withMotorInverted(RobotMap.HoodMoterInvert)
+            .withClosedLoopRampRate(Seconds.of(RobotMap.HoodRampRatePID))
+            .withOpenLoopRampRate(Seconds.of(RobotMap.HoodRampRateMan))
+            .withFeedforward(new SimpleMotorFeedforward(RobotMap.HoodStaticVolts, RobotMap.HoodVelVolts, RobotMap.HoodAccVolts))
+            .withSimFeedforward(new SimpleMotorFeedforward(RobotMap.HoodStaticVolts, RobotMap.HoodVelVolts, RobotMap.HoodAccVolts))
             .withControlMode(ControlMode.CLOSED_LOOP);
 
     private final SmartMotorController hoodSMC = new TalonFXWrapper(hoodMotor, DCMotor.getKrakenX44(1), hoodMotorConfig);
