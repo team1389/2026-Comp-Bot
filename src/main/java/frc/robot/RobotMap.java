@@ -4,10 +4,14 @@ package frc.robot;
 public class RobotMap {
   // Drivetrain Motor Ports
 
-  // Drivetrain CAN id's
+    //Drivetrain CAN id's
 
-  // Other Motor Ports
+    //Other CAN id's
+    //Turret CAN id's
+    public static final int TurretCanID = 12;
 
-  // Other CAN id's
+    //Max Speeds
+    public static final double MaxTurretSpeed = 1;
+    public static final int FlywheelCanID = 20;
 
 }
