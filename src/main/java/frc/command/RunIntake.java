@@ -8,34 +8,34 @@ import frc.subsystems.IntakeSubsystem;
 
 public class RunIntake extends Command {
 
-    private final Command internalCommand;
+  private final Command internalCommand;
 
-    public RunIntake(IntakeSubsystem intakeSubsystem, double armIntakeTargetAngle) {
+  public RunIntake(IntakeSubsystem intakeSubsystem, double armIntakeTargetAngle) {
 
-        Angle angle = Degrees.of(armIntakeTargetAngle);
+    Angle angle = Degrees.of(armIntakeTargetAngle);
 
-        internalCommand = intakeSubsystem.intake(angle);
+    internalCommand = intakeSubsystem.intake(angle);
 
-        addRequirements(intakeSubsystem);
-    }
+    addRequirements(intakeSubsystem);
+  }
 
-    @Override
-    public void initialize() {
-        internalCommand.initialize();
-    }
+  @Override
+  public void initialize() {
+    internalCommand.initialize();
+  }
 
-    @Override
-    public void execute() {
-        internalCommand.execute();
-    }
+  @Override
+  public void execute() {
+    internalCommand.execute();
+  }
 
-    @Override
-    public void end(boolean interrupted) {
-        internalCommand.end(interrupted);
-    }
+  @Override
+  public void end(boolean interrupted) {
+    internalCommand.end(interrupted);
+  }
 
-    @Override
-    public boolean isFinished() {
-        return internalCommand.isFinished();
-    }
+  @Override
+  public boolean isFinished() {
+    return internalCommand.isFinished();
+  }
 }

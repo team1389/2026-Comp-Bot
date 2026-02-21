@@ -4,7 +4,7 @@ import static edu.wpi.first.units.Units.*;
 
 import com.ctre.phoenix6.controls.NeutralOut;
 import com.ctre.phoenix6.hardware.TalonFX;
-
+import edu.wpi.first.math.controller.ProfiledPIDController;
 import edu.wpi.first.math.system.plant.DCMotor;
 import edu.wpi.first.math.system.plant.LinearSystemId;
 import edu.wpi.first.math.trajectory.TrapezoidProfile.Constraints;
@@ -13,11 +13,8 @@ import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.simulation.DCMotorSim;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-
 import frc.robot.RobotMap;
-
 import java.util.function.Supplier;
-
 import yams.gearing.GearBox;
 import yams.gearing.MechanismGearing;
 import yams.mechanisms.config.ArmConfig;
@@ -26,13 +23,10 @@ import yams.motorcontrollers.SmartMotorController;
 import yams.motorcontrollers.SmartMotorControllerConfig;
 import yams.motorcontrollers.remote.TalonFXWrapper;
 
-import edu.wpi.first.math.controller.ProfiledPIDController;
-
 public class IntakeSubsystem extends SubsystemBase {
 
   private final TalonFX intakeMotor = new TalonFX(RobotMap.IntakeCanID);
   private final TalonFX intakeArmMotor = new TalonFX(RobotMap.IntakeArmCanID);
-
 
   // Roller Simulation
   private static final double intakeMotorSimGearRatio = 3.0;
@@ -54,8 +48,7 @@ public class IntakeSubsystem extends SubsystemBase {
           .withClosedLoopRampRate(Seconds.of(0.25))
           .withClosedLoopController(
               new ProfiledPIDController(
-                  1.0, 0.0, 0.0,
-                  new Constraints(Math.toRadians(0), Math.toRadians(0))))
+                  1.0, 0.0, 0.0, new Constraints(Math.toRadians(0), Math.toRadians(0))))
           .withOpenLoopRampRate(Seconds.of(0.25))
           .withControlMode(SmartMotorControllerConfig.ControlMode.CLOSED_LOOP);
 
@@ -67,13 +60,10 @@ public class IntakeSubsystem extends SubsystemBase {
           new ArmConfig(intakeArmSMC)
               .withMass(Pounds.of(6.3857643))
               .withStartingPosition(Degrees.of(-137.6))
-              .withTelemetry("IntakeArmMech",
-                  SmartMotorControllerConfig.TelemetryVerbosity.HIGH)
+              .withTelemetry("IntakeArmMech", SmartMotorControllerConfig.TelemetryVerbosity.HIGH)
               .withMOI(210.270616)
               .withLength(Inches.of(22.938))
               .withHardLimit(Degrees.of(-137.6), Degrees.of(0)));
-
-
 
   public IntakeSubsystem() {}
 
@@ -86,7 +76,6 @@ public class IntakeSubsystem extends SubsystemBase {
   private void stopRoller() {
     intakeMotor.setControl(new NeutralOut());
   }
-
 
   // Arm Commands
 
@@ -104,37 +93,29 @@ public class IntakeSubsystem extends SubsystemBase {
 
   // Combined Intake Commands
   public Command intake(Angle angle) {
-    return run(() -> setRoller(1.0))
-        .alongWith(intakeArm.setAngle(angle));
+    return run(() -> setRoller(1.0)).alongWith(intakeArm.setAngle(angle));
   }
 
   public Command intake(Supplier<Angle> angleSupplier) {
-    return run(() -> setRoller(1.0))
-        .alongWith(intakeArm.setAngle(angleSupplier));
+    return run(() -> setRoller(1.0)).alongWith(intakeArm.setAngle(angleSupplier));
   }
 
   public Command outtake(Angle angle) {
-    return run(() -> setRoller(-1.0))
-        .alongWith(intakeArm.setAngle(angle));
+    return run(() -> setRoller(-1.0)).alongWith(intakeArm.setAngle(angle));
   }
 
   public Command outtake(Supplier<Angle> angleSupplier) {
-    return run(() -> setRoller(-1.0))
-        .alongWith(intakeArm.setAngle(angleSupplier));
+    return run(() -> setRoller(-1.0)).alongWith(intakeArm.setAngle(angleSupplier));
   }
 
   public Command retract(Angle retractAngle) {
-    return runOnce(this::stopRoller)
-        .andThen(intakeArm.setAngle(retractAngle));
+    return runOnce(this::stopRoller).andThen(intakeArm.setAngle(retractAngle));
   }
 
   // SysId
 
   public Command sysId() {
-    return intakeArm.sysId(
-        Volts.of(4.0),
-        Volts.per(Second).of(0.5),
-        Seconds.of(8.0));
+    return intakeArm.sysId(Volts.of(4.0), Volts.per(Second).of(0.5), Seconds.of(8.0));
   }
 
   @Override
@@ -158,7 +139,6 @@ public class IntakeSubsystem extends SubsystemBase {
     talonFXSim.setRawRotorPosition(
         intakeMotorSim.getAngularPosition().times(intakeMotorSimGearRatio));
 
-    talonFXSim.setRotorVelocity(
-        intakeMotorSim.getAngularVelocity().times(intakeMotorSimGearRatio));
+    talonFXSim.setRotorVelocity(intakeMotorSim.getAngularVelocity().times(intakeMotorSimGearRatio));
   }
 }
