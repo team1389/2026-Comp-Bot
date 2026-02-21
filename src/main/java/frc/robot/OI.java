@@ -1,11 +1,15 @@
 package frc.robot;
 
+import static edu.wpi.first.units.Units.Degrees;
+
 import com.pathplanner.lib.commands.PathPlannerAuto;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.command.RunFlywheel;
+import frc.command.RunIntake;
 import frc.command.RunTurret;
 import frc.subsystems.FlywheelSubsystem;
+import frc.subsystems.IntakeSubsystem;
 import frc.subsystems.TurretSubsystem;
 
 public class OI {
@@ -59,6 +63,12 @@ public class OI {
     TurretSubsystem turretSubsystem = new TurretSubsystem();
     double targetAngle = 45; // Set target angle for the turret
     FlywheelSubsystem flywheelSubsystem = new FlywheelSubsystem();
+    IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
+    // example angle/placeholder until we make autoallign
+    double armIntakeTargetAngle = 46;
+    double intakeTargetAngle = 90;
+    double outtakeTargetAngle = 0;
+
     /*
     Command driveFieldOrientedDirectAngle      = drivebase.driveFieldOriented(driveDirectAngle);
     Command driveFieldOrientedAnglularVelocity = drivebase.driveFieldOriented(driveAngularVelocity);
@@ -72,9 +82,13 @@ public class OI {
      */
     // PUT YOUR COMMANDS in here! Default commands go first.
     // manipController.a().whileTrue(new Intake(IntakeSubsystem));
-    manipController.a().whileTrue(new RunTurret(turretSubsystem, targetAngle));
+    manipController.a().whileTrue(new RunIntake(intakeSubsystem, armIntakeTargetAngle));
+    manipController.b().whileTrue(intakeSubsystem.intake(Degrees.of(intakeTargetAngle)));
+    manipController.y().whileTrue(intakeSubsystem.outtake(Degrees.of(outtakeTargetAngle)));
 
-    manipController.b().whileTrue(new RunFlywheel(flywheelSubsystem));
+    manipController.x().whileTrue(new RunTurret(turretSubsystem, targetAngle));
+
+    manipController.rightBumper().whileTrue(new RunFlywheel(flywheelSubsystem));
   }
 
   public Command getAutonomousCommand() {

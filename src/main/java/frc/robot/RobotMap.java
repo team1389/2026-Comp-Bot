@@ -32,4 +32,11 @@ public class RobotMap {
       false; // True if the hood moter is inverted relative to the angle rotation
   public static final int HoodMaxVel = 5000; // Max allowed rotational velocity in hood
   public static final int HoodMaxAcc = 2500; // Max allowed velocity change in hood
+
+  // Intake Motor ports
+  public static final int IntakeMotorPort = 15;
+  public static final int IntakeArmMotorPort = 16;
+  // Other CAN id's
+  public static final int IntakeCanID = 15;
+  public static final int IntakeArmCanID = 16;
 }
