@@ -101,6 +101,14 @@ public class HoodSubsystem extends SubsystemBase {
     return hood.set(dutyCycle);
   }
 
+  public void move(double speed) {
+    hoodMotor.setVoltage(speed);
+  }
+
+  public void stop() {
+    hoodMotor.setVoltage(0);
+  }
+
   @Override
   public void periodic() {
     hood.updateTelemetry();
