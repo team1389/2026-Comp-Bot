@@ -69,11 +69,11 @@ public class IntakeSubsystem extends SubsystemBase {
 
   // Private Roller Control
 
-  private void setRoller(double speed) {
-    intakeMotor.set(speed);
+  public void setRoller(double speed) {
+    intakeMotor.setVoltage(speed);
   }
 
-  private void stopRoller() {
+  public void stopRoller() {
     intakeMotor.setControl(new NeutralOut());
   }
 
@@ -89,6 +89,14 @@ public class IntakeSubsystem extends SubsystemBase {
 
   public Angle getAngle() {
     return intakeArm.getAngle();
+  }
+
+  public void moveAngle(double speed) {
+    intakeArmMotor.setVoltage(speed);
+  }
+
+  public void stopArm() {
+    intakeArmMotor.setVoltage(0);
   }
 
   // Combined Intake Commands
