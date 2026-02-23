@@ -10,6 +10,7 @@ public class RunTurret extends Command {
   public static TurretSubsystem turretSubsystem;
   private double targetAngle; // Sets angle to a variable so it can be used in execute and end.
 
+  @SuppressWarnings("static-access")
   public RunTurret(TurretSubsystem turretSubsystem, double targetAngle) {
     this.turretSubsystem = turretSubsystem;
     this.targetAngle = targetAngle;
