@@ -1,11 +1,13 @@
 package frc.robot;
 
+//import com.fasterxml.jackson.databind.ser.impl.TypeWrappedSerializer;
 import com.pathplanner.lib.commands.PathPlannerAuto;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.subsystems.SerializerSubsystem;
-import frc.command.RunSerializer;
+import frc.command.TestSerializer;
+
 
 public class OI {
     //Define controller ports | DO NOT TOUCH |
@@ -70,7 +72,7 @@ public class OI {
         driveController.a().onTrue((Commands.runOnce(drivebase::zeroGyro)));
          */
         //PUT YOUR COMMANDS in here! Default commands go first.  
-        manipController.leftTrigger().whileTrue(new RunSerializer(serializerSubsystem));
+        manipController.leftTrigger().whileTrue(new TestSerializer(serializerSubsystem));
 
     }
 

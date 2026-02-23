@@ -17,9 +17,9 @@ public class RobotMap {
 
     //Other CAN id's
 
-    public static final int IndexerCanID = 12;
-    public static final int KickerTopCanID = 14;
-    public static final int KickerBottomCanID = 15;
+    public static final int IndexerCanID = 22;
+    public static final int KickerTopCanID = 24;
+    public static final int KickerBottomCanID = 23;
 
     //Speed constants
 
