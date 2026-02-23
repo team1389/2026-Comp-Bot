@@ -4,7 +4,8 @@ import com.pathplanner.lib.commands.PathPlannerAuto;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-
+import frc.subsystems.SerializerSubsystem;
+import frc.command.RunSerializer;
 
 public class OI {
     //Define controller ports | DO NOT TOUCH |
@@ -12,7 +13,7 @@ public class OI {
     final CommandXboxController driveController = new CommandXboxController(0);
 
     //Define all subsystems using "IntakeSubsystem IntakeSubsystem = new IntakeSubsystem();"
-    //IntakeSubsystem IntakeSubsystem = new IntakeSubsystem();
+    SerializerSubsystem serializerSubsystem = new SerializerSubsystem();
 
 
 
@@ -69,7 +70,7 @@ public class OI {
         driveController.a().onTrue((Commands.runOnce(drivebase::zeroGyro)));
          */
         //PUT YOUR COMMANDS in here! Default commands go first.  
-        //manipController.a().whileTrue(new Intake(IntakeSubsystem));
+        manipController.leftTrigger().whileTrue(new RunSerializer(serializerSubsystem));
 
     }
 
