@@ -91,7 +91,7 @@ public class IntakeSubsystem extends SubsystemBase {
     return intakeArm.getAngle();
   }
 
-  public void moveAngle(double speed) {
+  public void setArmVoltage(double volts) {
     intakeArmMotor.setVoltage(speed);
   }
 
