@@ -101,7 +101,7 @@ public class HoodSubsystem extends SubsystemBase {
     return hood.set(dutyCycle);
   }
 
-  public void move(double speed) {
+  public void setHoodVoltage(double volts) {
     hoodMotor.setVoltage(speed);
   }
 
