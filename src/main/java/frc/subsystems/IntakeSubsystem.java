@@ -69,7 +69,7 @@ public class IntakeSubsystem extends SubsystemBase {
 
   // Private Roller Control
 
-  public void setRoller(double speed) {
+  public void setRollerVoltage(double volts) {
     intakeMotor.setVoltage(speed);
   }
 
