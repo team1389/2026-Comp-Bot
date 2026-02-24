@@ -25,7 +25,7 @@ public class OI {
   }
 
   private void configureBindings() {
-
+    System.out.println("Configured Bindings");
     TurretSubsystem turretSubsystem = new TurretSubsystem();
     // double targetAngle = 45; // Set target angle for the turret
     FlywheelSubsystem flywheelSubsystem = new FlywheelSubsystem();
@@ -36,6 +36,7 @@ public class OI {
     // double outtakeTargetAngle = 0;
 
     if (DriverStation.isTest()) {
+      System.out.print("Driver station in test mode");
       // Testing subsytem commands
       // Turret
       manipController.povLeft().whileTrue(new TestTurret(turretSubsystem, 2));
