@@ -70,7 +70,7 @@ public class FlywheelSubsystem extends SubsystemBase {
           .withSoftLimit(RPM.of(-5000), RPM.of(5000))
           .withSpeedometerSimulation(RPM.of(7500));
 
-  // Its only one flywheel because a flywheel that has twice the mass of the actual flywheel on the
+  // Its only one flywheel because a flywheel that has twice the mass of the actual flywheel on
   // robot would work the same as both flywheels do.
   private final FlyWheel flywheel = new FlyWheel(flywheelConfig);
 
@@ -102,12 +102,16 @@ public class FlywheelSubsystem extends SubsystemBase {
 
   @Override
   public void periodic() {
-    flywheel.updateTelemetry();
+    // flywheel.updateTelemetry();
   }
 
   @Override
   public void simulationPeriodic() {
-    flywheel.simIterate();
+    // flywheel.simIterate();
+  }
+
+  public void setVoltage(double volts) {
+    flywheelMotor1.setVoltage(-volts);
   }
 
   public Command setRPM(LinearVelocity speed) {
