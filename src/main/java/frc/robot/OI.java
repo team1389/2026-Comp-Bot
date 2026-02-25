@@ -1,5 +1,8 @@
 package frc.robot;
 
+import static edu.wpi.first.units.Units.Degrees;
+
+
 import com.pathplanner.lib.commands.PathPlannerAuto;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -13,6 +16,9 @@ import frc.subsystems.FlywheelSubsystem;
 import frc.subsystems.HoodSubsystem;
 import frc.subsystems.IntakeSubsystem;
 import frc.subsystems.TurretSubsystem;
+import frc.subsystems.SerializerSubsystem;
+import frc.command.TestSerializer;
+
 
 public class OI {
   // Define controller ports | DO NOT TOUCH |
@@ -28,6 +34,7 @@ public class OI {
     System.out.println("Configured Bindings");
     TurretSubsystem turretSubsystem = new TurretSubsystem();
     // double targetAngle = 45; // Set target angle for the turret
+    SerializerSubsystem serializerSubsystem = new SerializerSubsystem();
     FlywheelSubsystem flywheelSubsystem = new FlywheelSubsystem();
     IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
     HoodSubsystem hoodSubsystem = new HoodSubsystem();
@@ -53,11 +60,18 @@ public class OI {
       // IntakeArm
       manipController.leftBumper().whileTrue(new TestIntakeArm(intakeSubsystem, 1));
       manipController.leftTrigger().whileTrue(new TestIntakeArm(intakeSubsystem, -1));
+
+      manipController.start().whileTrue(new TestSerializer(serializerSubsystem, 0.1));
+      manipController.back().whileTrue(new TestSerializer(serializerSubsystem, -0.1));
+
+
+
     } else {
       // Comp commands should be put here
-      // manipController.a().whileTrue(new RunIntake(intakeSubsystem, armIntakeTargetAngle));
-      // manipController.b().whileTrue(intakeSubsystem.intake(Degrees.of(intakeTargetAngle)));
-      // manipController.y().whileTrue(intakeSubsystem.outtake(Degrees.of(outtakeTargetAngle)));
+      manipController.a().whileTrue(new RunIntake(intakeSubsystem, armIntakeTargetAngle));
+      manipController.b().whileTrue(intakeSubsystem.intake(Degrees.of(intakeTargetAngle)));
+      manipController.y().whileTrue(intakeSubsystem.outtake(Degrees.of(outtakeTargetAngle)));
+      
 
       // manipController.x().whileTrue(new RunTurret(turretSubsystem, targetAngle));
 
