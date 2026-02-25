@@ -102,7 +102,7 @@ public class HoodSubsystem extends SubsystemBase {
   }
 
   public void setHoodVoltage(double volts) {
-    hoodMotor.setVoltage(volts);
+    hoodMotor.setVoltage(speed);
   }
 
   public void stop() {
@@ -111,7 +111,7 @@ public class HoodSubsystem extends SubsystemBase {
 
   @Override
   public void periodic() {
-    // hood.updateTelemetry();
+    hood.updateTelemetry();
   }
 
   @Override

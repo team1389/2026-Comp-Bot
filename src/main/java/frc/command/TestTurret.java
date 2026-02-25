@@ -1,6 +1,5 @@
 package frc.command;
 
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.subsystems.TurretSubsystem;
 
@@ -21,14 +20,12 @@ public class TestTurret extends Command {
   public void execute() {
     // This gets called when the command does.
     turretSubsystem.setSpeed(targetRPM);
-    SmartDashboard.putBoolean("Turret Motion", true);
   }
 
   @Override
   public void end(boolean interrupted) {
     // this gets called when the input stops being given.
     turretSubsystem.stop();
-    SmartDashboard.putBoolean("Turret Motion", false);
   }
 
   @Override

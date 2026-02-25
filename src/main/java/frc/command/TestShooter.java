@@ -1,16 +1,18 @@
 package frc.command;
 
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import static edu.wpi.first.units.Units.InchesPerSecond;
+
+import edu.wpi.first.units.measure.LinearVelocity;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.subsystems.FlywheelSubsystem;
 
 public class TestShooter extends Command {
   public FlywheelSubsystem flywheelSubsystem;
-  public double voltage;
+  public double targetRPM;
 
-  public TestShooter(FlywheelSubsystem flywheelSubsystem, double voltage) {
+  public TestShooter(FlywheelSubsystem flywheelSubsystem, double targetRPM) {
     this.flywheelSubsystem = flywheelSubsystem;
-    this.voltage = voltage;
+    this.targetRPM = targetRPM;
   }
 
   public void initialize() {
@@ -20,15 +22,13 @@ public class TestShooter extends Command {
   @Override
   public void execute() {
     // This gets called when the command does.
-    flywheelSubsystem.setVoltage(voltage);
-    SmartDashboard.putBoolean("Shooter Motion", true);
+    flywheelSubsystem.setRPMDirect(LinearVelocity.ofBaseUnits(targetRPM, InchesPerSecond));
   }
 
   @Override
   public void end(boolean interrupted) {
     // this gets called when the input stops being given.
-    flywheelSubsystem.setVoltage(0);
-    SmartDashboard.putBoolean("Shooter Motion", false);
+    flywheelSubsystem.setRPMDirect(LinearVelocity.ofBaseUnits(0, InchesPerSecond));
   }
 
   @Override

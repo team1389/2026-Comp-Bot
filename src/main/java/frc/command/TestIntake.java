@@ -1,16 +1,15 @@
 package frc.command;
 
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.subsystems.IntakeSubsystem;
 
 public class TestIntake extends Command {
   public IntakeSubsystem intakeSubsystem;
-  public double voltage;
+  public double targetRPM;
 
-  public TestIntake(IntakeSubsystem intakeSubsystem, double voltage) {
+  public TestIntake(IntakeSubsystem intakeSubsystem, double targetRPM) {
     this.intakeSubsystem = intakeSubsystem;
-    this.voltage = voltage;
+    this.targetRPM = targetRPM;
   }
 
   public void initialize() {
@@ -20,15 +19,13 @@ public class TestIntake extends Command {
   @Override
   public void execute() {
     // This gets called when the command does.
-    intakeSubsystem.setRollerVoltage(voltage);
-    SmartDashboard.putBoolean("Intake Motion", true);
+    intakeSubsystem.setRoller(targetRPM);
   }
 
   @Override
   public void end(boolean interrupted) {
     // this gets called when the input stops being given.
     intakeSubsystem.stopRoller();
-    SmartDashboard.putBoolean("Intake Motion", false);
   }
 
   @Override
