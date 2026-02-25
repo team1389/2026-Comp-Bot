@@ -4,7 +4,7 @@ package frc.robot;
 public class RobotMap {
   // Drivetrain Motor Ports
 
-    // Drivetrain CAN id's
+  // Drivetrain CAN id's
 
   // Other CAN id's
   // Turret CAN id's
@@ -40,15 +40,13 @@ public class RobotMap {
   public static final int IntakeCanID = 21;
   public static final int IntakeArmCanID = 20;
 
-      //Other CAN id's
+  // Other CAN id's
 
-    public static final int IndexerCanID = 22;
-    public static final int KickerTopCanID = 24;
-    public static final int KickerBottomCanID = 23;
+  public static final int IndexerCanID = 22;
+  public static final int KickerTopCanID = 24;
+  public static final int KickerBottomCanID = 23;
 
-    //Speed constants
+  // Speed constants
 
-    public static final double SerializerSpeed = 0.75;
-
-    
+  public static final double SerializerSpeed = 0.75;
 }
