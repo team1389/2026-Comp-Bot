@@ -47,8 +47,8 @@ public class SerializerSubsystem extends SubsystemBase {
     kickerBottomMotor.setControl(new Follower(RobotMap.IndexerCanID, MotorAlignmentValue.Opposed));
   }
 
-  public void setSpeed(double SerializerSpeed) {
-    indexerMotor.setControl(new DutyCycleOut(SerializerSpeed));
+  public void setSpeed(double dutyCycleSpeed) {
+    indexerMotor.setControl(new DutyCycleOut(dutyCycleSpeed));
   }
 
   public void stop() {
