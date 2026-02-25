@@ -1,8 +1,5 @@
 package frc.robot;
 
-import static edu.wpi.first.units.Units.Degrees;
-
-
 import com.pathplanner.lib.commands.PathPlannerAuto;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -10,15 +7,14 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.command.TestHood;
 import frc.command.TestIntake;
 import frc.command.TestIntakeArm;
+import frc.command.TestSerializer;
 import frc.command.TestShooter;
 import frc.command.TestTurret;
 import frc.subsystems.FlywheelSubsystem;
 import frc.subsystems.HoodSubsystem;
 import frc.subsystems.IntakeSubsystem;
-import frc.subsystems.TurretSubsystem;
 import frc.subsystems.SerializerSubsystem;
-import frc.command.TestSerializer;
-
+import frc.subsystems.TurretSubsystem;
 
 public class OI {
   // Define controller ports | DO NOT TOUCH |
@@ -64,14 +60,11 @@ public class OI {
       manipController.start().whileTrue(new TestSerializer(serializerSubsystem, 0.1));
       manipController.back().whileTrue(new TestSerializer(serializerSubsystem, -0.1));
 
-
-
     } else {
       // Comp commands should be put here
-      manipController.a().whileTrue(new RunIntake(intakeSubsystem, armIntakeTargetAngle));
-      manipController.b().whileTrue(intakeSubsystem.intake(Degrees.of(intakeTargetAngle)));
-      manipController.y().whileTrue(intakeSubsystem.outtake(Degrees.of(outtakeTargetAngle)));
-      
+      // manipController.a().whileTrue(new RunIntake(intakeSubsystem, armIntakeTargetAngle));
+      // manipController.b().whileTrue(intakeSubsystem.intake(Degrees.of(intakeTargetAngle)));
+      // manipController.y().whileTrue(intakeSubsystem.outtake(Degrees.of(outtakeTargetAngle)));
 
       // manipController.x().whileTrue(new RunTurret(turretSubsystem, targetAngle));
 
