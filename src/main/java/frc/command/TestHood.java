@@ -1,15 +1,16 @@
 package frc.command;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.subsystems.HoodSubsystem;
 
 public class TestHood extends Command {
   public HoodSubsystem hoodSubsystem;
-  public double targetRPM;
+  public double voltage;
 
-  public TestHood(HoodSubsystem hoodSubsystem, double targetRPM) {
+  public TestHood(HoodSubsystem hoodSubsystem, double voltage) {
     this.hoodSubsystem = hoodSubsystem;
-    this.targetRPM = targetRPM;
+    this.voltage = voltage;
   }
 
   public void initialize() {
@@ -19,13 +20,15 @@ public class TestHood extends Command {
   @Override
   public void execute() {
     // This gets called when the command does.
-    hoodSubsystem.move(targetRPM);
+    hoodSubsystem.setHoodVoltage(voltage);
+    SmartDashboard.putBoolean("Hood Motion", true);
   }
 
   @Override
   public void end(boolean interrupted) {
     // this gets called when the input stops being given.
     hoodSubsystem.stop();
+    SmartDashboard.putBoolean("Hood Motion", false);
   }
 
   @Override

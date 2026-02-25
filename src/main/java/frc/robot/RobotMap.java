@@ -8,13 +8,14 @@ public class RobotMap {
 
   // Other CAN id's
   // Turret CAN id's
-  public static final int TurretCanID = 12;
-    // Max Speeds
+  public static final int TurretCanID = 25;
+
+  // Max Speeds
   public static final double MaxTurretSpeed = 1;
-  public static final int FlywheelCanID = 20;
+  public static final int FlywheelCanID = 28;
 
   // Henry's Hood
-  public static final int HoodCanID = 2;
+  public static final int HoodCanID = 27;
   public static final double HoodIntegralCorr =
       0.00016541; // How aggressivly hood fixes position error
   public static final int HoodMaxAmp = 40; // Max motor current allowed (avoid brown out)
@@ -33,11 +34,11 @@ public class RobotMap {
   public static final int HoodMaxAcc = 2500; // Max allowed velocity change in hood
 
   // Intake Motor ports
-  public static final int IntakeMotorPort = 15;
-  public static final int IntakeArmMotorPort = 16;
+  public static final int IntakeMotorPort = 11;
+  public static final int IntakeArmMotorPort = 10;
   // Other CAN id's
-  public static final int IntakeCanID = 15;
-  public static final int IntakeArmCanID = 16;
+  public static final int IntakeCanID = 21;
+  public static final int IntakeArmCanID = 20;
 
       //Other CAN id's
 
