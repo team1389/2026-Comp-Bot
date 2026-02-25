@@ -66,7 +66,7 @@ public class SerializerSubsystem extends SubsystemBase {
     @Override
   public void periodic() {}
 
-    public void setRPMDirect(LinearVelocity ofBaseUnits) {
+    public void setRPMDirect(AngularVelocity ofBaseUnits) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'setRPMDirect'");
     }

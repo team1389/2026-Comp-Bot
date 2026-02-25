@@ -1,19 +1,20 @@
 
 package frc.command;
 
-import static edu.wpi.first.units.Units.InchesPerSecond;
 
+
+import edu.wpi.first.units.measure.AngularVelocity;
 import edu.wpi.first.units.measure.LinearVelocity;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.subsystems.SerializerSubsystem;
 
 public class TestSerializer extends Command {
   public SerializerSubsystem serializerSubsystem;
-  public double targetRPM;
+  public double targetDutyCycle;
 
-  public TestSerializer(SerializerSubsystem serializerSubsystem) {
+  public TestSerializer(SerializerSubsystem serializerSubsystem, double targetDutyCycle) {
     this.serializerSubsystem = serializerSubsystem;
-    //this.targetRPM = targetRPM;
+    this.targetDutyCycle = targetDutyCycle;
   }
 
   public void initialize() {
@@ -23,13 +24,13 @@ public class TestSerializer extends Command {
   @Override
   public void execute() {
     // This gets called when the command does.
-    serializerSubsystem.setRPMDirect(LinearVelocity.ofBaseUnits(targetRPM, InchesPerSecond));
+    serializerSubsystem.setSpeed(targetDutyCycle);
   }
 
   @Override
   public void end(boolean interrupted) {
     // this gets called when the input stops being given.
-    serializerSubsystem.setRPMDirect(LinearVelocity.ofBaseUnits(0, InchesPerSecond));
+    serializerSubsystem.setSpeed(0);
   }
 
   @Override
