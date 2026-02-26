@@ -23,7 +23,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class VisionSubsystem extends SubsystemBase {
     // Define camera names as they appear in the PhotonVision dashboard
-    private final String[] cameraNames = {"FrontCam", "LeftCam", "RightCam"};
+    private final String[] cameraNames = {"FrontCam", "BackLeftCam", "BackRightCam"}; // One of these cameras may or may not exist
     private final List<PhotonCamera> cameras = new ArrayList<>();
     
     // Simulation objects
@@ -44,10 +44,10 @@ public class VisionSubsystem extends SubsystemBase {
         cameraProp.setLatencyStdDevMs(5);
 
         // Define physical mounting positions (Robot-to-Camera transforms)
-        Transform3d[] robotToCamTransforms = {
-            new Transform3d(new Translation3d(0.3, 0, 0.5), new Rotation3d(0, 0, 0)),           // Front
-            new Transform3d(new Translation3d(0, 0.2, 0.5), new Rotation3d(0, 0, Math.PI/2)),  // Left (90 deg)
-            new Transform3d(new Translation3d(0, -0.2, 0.5), new Rotation3d(0, 0, -Math.PI/2)) // Right (-90 deg)
+        Transform3d[] robotToCamTransforms = { // These values are from the pigeon
+            new Transform3d(new Translation3d(0, 0, 0), new Rotation3d(0, 0, 0)),           // Front (Driver camera)
+            new Transform3d(new Translation3d(0, 0, 0), new Rotation3d(0, 0, Math.PI)),  // Left (This may not exist)
+            new Transform3d(new Translation3d(10, -9.5, -6.5), new Rotation3d(0, 25, Math.PI)) // Back right camera (25° up), xyz values rough inch estimates
         };
 
         for (int i = 0; i < cameraNames.length; i++) {
