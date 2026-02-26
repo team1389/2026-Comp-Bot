@@ -1,7 +1,9 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.OI.*;
 
 /** Don't change the name of this class since the VM is set up to run this */
 public class Robot extends TimedRobot {
@@ -38,5 +40,9 @@ public class Robot extends TimedRobot {
 
   /** This function is called periodically during test mode. */
   @Override
-  public void testPeriodic() {}
+  public void testPeriodic() {
+    SmartDashboard.putNumber("Hood Angle", OI.hoodSubsystem.getAngleDegrees());
+    SmartDashboard.putNumber("Turret Angle", OI.turretSubsystem.getAngleDegrees());
+    SmartDashboard.putNumber("Flywheel Speed", OI.flywheelSubsystem.getSpeedRPM());
+  }
 }

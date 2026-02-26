@@ -19,7 +19,7 @@ public class TestTurret extends Command {
   @Override
   public void execute() {
     // This gets called when the command does.
-    turretSubsystem.setSpeed(targetRPM);
+    turretSubsystem.setSpeed(-targetRPM);
   }
 
   @Override

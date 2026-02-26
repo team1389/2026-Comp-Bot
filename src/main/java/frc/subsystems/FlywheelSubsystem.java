@@ -76,6 +76,10 @@ public class FlywheelSubsystem extends SubsystemBase {
 
   public FlywheelSubsystem() {}
 
+  public void setSpeed(double volts) {
+    flywheelMotor1.setVoltage(volts);
+  }
+
   public AngularVelocity getVelocity() {
     return flywheel.getSpeed();
   }
@@ -98,6 +102,10 @@ public class FlywheelSubsystem extends SubsystemBase {
 
   public Command sysId() {
     return flywheel.sysId(Volts.of(10), Volts.of(1).per(Second), Seconds.of(5));
+  }
+
+  public double getSpeedRPM() {
+    return flywheel.getSpeed().in(RPM);
   }
 
   @Override

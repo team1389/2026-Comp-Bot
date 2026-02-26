@@ -90,6 +90,10 @@ public class TurretSubsystem extends SubsystemBase {
         );
   }
 
+  public double getAngleDegrees() {
+    return turret.getAngle().in(Degrees);
+  }
+
   public Command setDutyCycle(Supplier<Double> dutyCycleSupplier) {
     return turret.set(dutyCycleSupplier);
   }

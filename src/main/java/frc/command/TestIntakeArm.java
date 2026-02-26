@@ -19,7 +19,7 @@ public class TestIntakeArm extends Command {
   @Override
   public void execute() {
     // This gets called when the command does.
-    intakeSubsystem.moveAngle(targetRPM);
+    intakeSubsystem.setArmVoltage(targetRPM);
   }
 
   @Override
