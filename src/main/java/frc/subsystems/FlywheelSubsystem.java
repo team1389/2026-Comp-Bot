@@ -93,7 +93,7 @@ public class FlywheelSubsystem extends SubsystemBase {
   }
 
   public Command setVelocity(Supplier<AngularVelocity> speed) {
-    return flywheel.setSpeed(speed);
+    return flywheel.setSpeed(s);
   }
 
   public Command setDutyCycle(Supplier<Double> dutyCycle) {
