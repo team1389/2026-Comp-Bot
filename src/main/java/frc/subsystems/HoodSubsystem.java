@@ -102,11 +102,15 @@ public class HoodSubsystem extends SubsystemBase {
   }
 
   public void setHoodVoltage(double volts) {
-    hoodMotor.setVoltage(speed);
+    hoodMotor.setVoltage(volts);
   }
 
   public void stop() {
     hoodMotor.setVoltage(0);
+  }
+
+  public double getAngleDegrees() {
+    return hood.getAngle().in(Degrees);
   }
 
   @Override

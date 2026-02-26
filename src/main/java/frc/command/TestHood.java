@@ -19,7 +19,7 @@ public class TestHood extends Command {
   @Override
   public void execute() {
     // This gets called when the command does.
-    hoodSubsystem.move(targetRPM);
+    hoodSubsystem.setHoodVoltage(targetRPM);
   }
 
   @Override

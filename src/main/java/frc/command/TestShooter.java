@@ -22,7 +22,7 @@ public class TestShooter extends Command {
   @Override
   public void execute() {
     // This gets called when the command does.
-    flywheelSubsystem.setRPMDirect(LinearVelocity.ofBaseUnits(targetRPM, InchesPerSecond));
+    flywheelSubsystem.setSpeed(targetRPM);
   }
 
   @Override

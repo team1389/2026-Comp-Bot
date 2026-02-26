@@ -70,7 +70,7 @@ public class IntakeSubsystem extends SubsystemBase {
   // Private Roller Control
 
   public void setRollerVoltage(double volts) {
-    intakeMotor.setVoltage(speed);
+    intakeMotor.setVoltage(volts);
   }
 
   public void stopRoller() {
@@ -92,7 +92,7 @@ public class IntakeSubsystem extends SubsystemBase {
   }
 
   public void setArmVoltage(double volts) {
-    intakeArmMotor.setVoltage(speed);
+    intakeArmMotor.setVoltage(volts);
   }
 
   public void stopArm() {
@@ -101,19 +101,19 @@ public class IntakeSubsystem extends SubsystemBase {
 
   // Combined Intake Commands
   public Command intake(Angle angle) {
-    return run(() -> setRoller(1.0)).alongWith(intakeArm.setAngle(angle));
+    return run(() -> setRollerVoltage(1.0)).alongWith(intakeArm.setAngle(angle));
   }
 
   public Command intake(Supplier<Angle> angleSupplier) {
-    return run(() -> setRoller(1.0)).alongWith(intakeArm.setAngle(angleSupplier));
+    return run(() -> setRollerVoltage(1.0)).alongWith(intakeArm.setAngle(angleSupplier));
   }
 
   public Command outtake(Angle angle) {
-    return run(() -> setRoller(-1.0)).alongWith(intakeArm.setAngle(angle));
+    return run(() -> setRollerVoltage(-1.0)).alongWith(intakeArm.setAngle(angle));
   }
 
   public Command outtake(Supplier<Angle> angleSupplier) {
-    return run(() -> setRoller(-1.0)).alongWith(intakeArm.setAngle(angleSupplier));
+    return run(() -> setRollerVoltage(-1.0)).alongWith(intakeArm.setAngle(angleSupplier));
   }
 
   public Command retract(Angle retractAngle) {
