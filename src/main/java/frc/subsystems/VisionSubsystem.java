@@ -11,8 +11,8 @@ import org.photonvision.simulation.SimCameraProperties;
 import org.photonvision.simulation.VisionSystemSim;
 import org.photonvision.targeting.PhotonTrackedTarget;
 
-import edu.wpi.first.apriltag.AprilTagFieldLayout;
-import edu.wpi.first.apriltag.AprilTagFields;
+//import edu.wpi.first.apriltag.AprilTagFieldLayout;
+//import edu.wpi.first.apriltag.AprilTagFields;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Rotation3d;
@@ -45,9 +45,9 @@ public class VisionSubsystem extends SubsystemBase {
 
         // Define physical mounting positions (Robot-to-Camera transforms)
         Transform3d[] robotToCamTransforms = { // These values are from the pigeon
-            new Transform3d(new Translation3d(0, 0, 0), new Rotation3d(0, 0, 0)),           // Front (Driver camera)
-            new Transform3d(new Translation3d(0, 0, 0), new Rotation3d(0, 0, Math.PI)),  // Left (This may not exist)
-            new Transform3d(new Translation3d(10, -9.5, -6.5), new Rotation3d(0, 25, Math.PI)) // Back right camera (25° up), xyz values rough inch estimates
+            new Transform3d(new Translation3d(0, 0, 0), new Rotation3d(0, 0, 0)),        // Front (Driver camera)
+            new Transform3d(new Translation3d(-9.4, -9.4, -6.5), new Rotation3d(0, 0, Math.PI)),   // Left (This may not exist)
+            new Transform3d(new Translation3d(10, -9.5, -6.5), new Rotation3d(0, 25, Math.PI))   // Back right camera (25° up), xyz values rough inch estimates
         };
 
         for (int i = 0; i < cameraNames.length; i++) {
