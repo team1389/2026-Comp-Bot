@@ -63,8 +63,25 @@ public class TurretSubsystem extends SubsystemBase {
           .withMOI(Meters.of(0.25), Pounds.of(4)); // MOI Calculation
 
   private final Pivot turret = new Pivot(turretConfig);
+  //Variables based on teeth given by machanical.
+  private final int e1_teeth = 18;
+  private final int e2_teeth = 19;
+  private final int t_teeth = 140;
+  //offest until I find the actual one.
+  private final double e1_offset = 0.0;
+  private final double e2_offset = 0.0;
+  // n is the number of integer rotations and E is the encoders in degrees interms of data given.
 
-  public TurretSubsystem() {}
+  //private final EasyCRTConfig easyCRTConfig;
+
+
+  public TurretSubsystem() {
+    //In intialization, find abosolute position and set the motor internal state
+    double initialRotations = calculateAbsoluteRotations();
+    if(initialRotations != -1){
+      turretSMC.setPosition(Degrees.of(initialRotations*360));
+    }
+  }
 
   public Command setAngle(Angle angle) {
     return turret.setAngle(angle);
@@ -89,7 +106,7 @@ public class TurretSubsystem extends SubsystemBase {
         Seconds.of(8.0) // duration
         );
   }
-
+  
   public double getAngleDegrees() {
     return turret.getAngle().in(Degrees);
   }
@@ -118,5 +135,25 @@ public class TurretSubsystem extends SubsystemBase {
 
   public void setSpeed(double i) {
     turretMotor.setControl(new VoltageOut(i));
+  }
+  public double calculateAbsoluteRotations(){
+    //need position of encoder to know the "zero" position of the turret.
+    //need raw data from bot encoders.
+    double rawE1 = 0.0;
+    double rawE2 = 0.0;
+    double e1_val = (rawE1-e1_offset)%360;
+    if(e1_val < 0) e1_val += 360; //To ensure the value is between 0 and 360
+    double e2_val = (rawE2-e2_offset)%360;
+    if(e2_val < 0) e2_val += 360;
+    for(int n1 = 0; n1 < e2_teeth; n1++){
+      double a1 = (n1+(e1_val/360)) * ((double)e1_teeth/t_teeth);
+      for(int n2 = 0; n2 < e1_teeth; n2++){
+        double a2 = (n2+(e2_val/360))*((double)e2_teeth/t_teeth);
+        if(Math.abs(a1-a2) < 0.005){ //0.005 is the tolerance for larger gears. 
+          return a1; //turret position in rotations
+        }
+      }
+    }
+    return -1; // is no match is found
   }
 }
