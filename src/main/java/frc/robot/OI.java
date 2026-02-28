@@ -12,11 +12,13 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.command.TestHood;
 import frc.command.TestIntake;
 import frc.command.TestIntakeArm;
+import frc.command.TestSerializer;
 import frc.command.TestShooter;
 import frc.command.TestTurret;
 import frc.subsystems.FlywheelSubsystem;
 import frc.subsystems.HoodSubsystem;
 import frc.subsystems.IntakeSubsystem;
+import frc.subsystems.SerializerSubsystem;
 import frc.subsystems.TurretSubsystem;
 
 public class OI {
@@ -27,6 +29,7 @@ public class OI {
   public static FlywheelSubsystem flywheelSubsystem = new FlywheelSubsystem();
   public static IntakeSubsystem IntakeSubsystem = new IntakeSubsystem();
   public static HoodSubsystem hoodSubsystem = new HoodSubsystem();
+  public static SerializerSubsystem serializerSubsystem = new SerializerSubsystem();
 
   // Creates Bindings for controllers
   public OI() {
@@ -49,18 +52,20 @@ public class OI {
       manipController.povLeft().whileTrue(new TestTurret(turretSubsystem, 2));
       manipController.povRight().whileTrue(new TestTurret(turretSubsystem, -2));
       // Flywheel
-      manipController.rightTrigger().whileTrue(new TestShooter(flywheelSubsystem, -60));
-      manipController.rightBumper().whileTrue(new TestShooter(flywheelSubsystem, 60));
+      manipController.rightTrigger().whileTrue(new TestShooter(flywheelSubsystem, -16));
+      manipController.rightBumper().whileTrue(new TestShooter(flywheelSubsystem, 16));
       // Intake
-      manipController.a().whileTrue(new TestIntake(IntakeSubsystem, 1));
-      manipController.b().whileTrue(new TestIntake(IntakeSubsystem, -1));
+      manipController.a().whileTrue(new TestIntake(IntakeSubsystem, 32));
+      manipController.b().whileTrue(new TestIntake(IntakeSubsystem, -32));
       // Hood
       manipController.povUp().whileTrue(new TestHood(hoodSubsystem, 1));
       manipController.povDown().whileTrue(new TestHood(hoodSubsystem, -1));
       // IntakeArm
-      manipController.leftBumper().whileTrue(new TestIntakeArm(IntakeSubsystem, 1));
-      manipController.leftTrigger().whileTrue(new TestIntakeArm(IntakeSubsystem, -1));
-
+      manipController.leftBumper().whileTrue(new TestIntakeArm(IntakeSubsystem, 16));
+      manipController.leftTrigger().whileTrue(new TestIntakeArm(IntakeSubsystem, -16));
+      // Serializer
+      manipController.start().whileTrue(new TestSerializer(serializerSubsystem, 5));
+      manipController.back().whileTrue(new TestSerializer(serializerSubsystem, -5));
     } else {
       // Comp commands should be put here
       /*

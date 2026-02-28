@@ -39,7 +39,8 @@ public class HoodSubsystem extends SubsystemBase {
               RPM.of(RobotMap.HoodMaxVel),
               RotationsPerSecondPerSecond.of(RobotMap.HoodMaxAcc))
           .withGearing(
-              new MechanismGearing(GearBox.fromReductionStages(4, 4))) // gear ratio after reduction
+              new MechanismGearing(
+                  GearBox.fromReductionStages(144.9, 1))) // gear ratio after reduction
           .withIdleMode(MotorMode.COAST)
           .withTelemetry("HoodMotor", TelemetryVerbosity.HIGH)
           .withStatorCurrentLimit(Amps.of(RobotMap.HoodMaxAmp))

@@ -40,7 +40,7 @@ public class IntakeSubsystem extends SubsystemBase {
   // Arm Configuration (YAMS)
   private final SmartMotorControllerConfig intakeArmMotorConfig =
       new SmartMotorControllerConfig(this)
-          .withGearing(new MechanismGearing(GearBox.fromTeeth(48, 36)))
+          .withGearing(new MechanismGearing(GearBox.fromTeeth(4, 9)))
           .withIdleMode(SmartMotorControllerConfig.MotorMode.BRAKE)
           .withTelemetry("IntakeArmMotor", SmartMotorControllerConfig.TelemetryVerbosity.HIGH)
           .withStatorCurrentLimit(Amps.of(40))

@@ -43,6 +43,6 @@ public class Robot extends TimedRobot {
   public void testPeriodic() {
     SmartDashboard.putNumber("Hood Angle", OI.hoodSubsystem.getAngleDegrees());
     SmartDashboard.putNumber("Turret Angle", OI.turretSubsystem.getAngleDegrees());
-    SmartDashboard.putNumber("Flywheel Speed", OI.flywheelSubsystem.getSpeedRPM());
+    SmartDashboard.putNumber("Flywheel Speed", Math.abs(OI.flywheelSubsystem.getSpeedRPM() * 10));
   }
 }
